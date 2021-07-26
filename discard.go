@@ -2,7 +2,10 @@ package logger
 
 var Discard Logger = &discardLogger{}
 
-var _ MessageLogger = (*discardLogger)(nil)
+var (
+	_ MessageLogger = (*discardLogger)(nil)
+	_ Buffered      = (*discardLogger)(nil)
+)
 
 type discardLogger struct{}
 
@@ -24,4 +27,8 @@ func (l *discardLogger) Errorf(format string, v ...interface{}) {
 
 func (l *discardLogger) WithFields(fields Fields) Logger {
 	return l
+}
+
+func (l *discardLogger) Flush() error {
+	return nil
 }
