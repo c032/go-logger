@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	log := logger.Default
+	log := logger.Default()
 
 	log.Print("No fields.")
 
