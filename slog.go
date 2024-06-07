@@ -10,6 +10,8 @@ import (
 	"time"
 )
 
+var _ Logger = (*slogWrapper)(nil)
+
 type slogWrapper struct {
 	mu     sync.Mutex
 	ctx    context.Context
