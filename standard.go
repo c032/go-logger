@@ -5,9 +5,7 @@ import (
 	"log"
 )
 
-var (
-	_ Logger = (*standardWrapper)(nil)
-)
+var _ Logger = (*standardWrapper)(nil)
 
 type standardWrapper struct {
 	logger *log.Logger
