@@ -135,6 +135,7 @@ func NewJSON(w io.Writer) Logger {
 		return Discard
 	}
 
+	// TODO: Use `log/slog` with `(log/slog).JSONHandler`.
 	l := &jsonLogger{
 		w: w,
 	}
