@@ -6,6 +6,7 @@ import (
 	"log"
 	"log/slog"
 	"runtime"
+	"sort"
 	"sync"
 	"time"
 )
@@ -124,7 +125,15 @@ func (sw *slogWrapper) WithFields(fields Fields) Logger {
 
 	l := sw.logger
 
-	for k, v := range fields {
+	var keys []string
+	for k, _ := range fields {
+		keys = append(keys, k)
+	}
+	sort.Strings(keys)
+
+	for _, k := range keys {
+		v := fields[k]
+
 		l = l.With(k, v)
 	}
 
